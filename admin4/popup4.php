@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<link href="../files/css/popup.css" rel="stylesheet">
+<style>
+  body {
+    font-family: "Open Sans", sans-serif;
+    height: 100vh;
+    background-image:url(../files/images/back.jpg);
+    background-size: cover;
+  }
+</style>
+<body onload="document.getElementById('id01').style.display='block'" style="width:auto;">
+  <div id="id01" class="modal">
+    <form class="modal-content animate" action="../admin4/admin4.php" method="POST">
+      <div class="container">
+        <select name="year" required="required">
+          <option value="">--Select Session--</option>
+          <option value="2018">2018-2019</option>
+          <option value="2017">2017-2018</option>
+          <option value="2016">2016-2017</option>
+        </select>
+        <button type="submit" name="btn" id="btn" class="loginbtn">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
