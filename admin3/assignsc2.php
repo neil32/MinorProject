@@ -1,0 +1,142 @@
+<?php
+session_start();
+include("conn.php");
+include("../admin1/function.php");
+$year=$_SESSION['eyear'];
+$flag=0;
+if(isset($_POST['btn']))
+{
+  if(isset($_POST['chk1']))
+  {
+    $ename1=$_POST['ename1'];
+    $_SESSION['ename1']=$ename1;
+    $sname1=$_POST['sname1'];
+    $ccode1=$_POST['ccode1'];
+    $qr="SELECT studentccode,studentname FROM studentdata WHERE studentccode=? AND studentname=?";
+    $preparedstmt=$conn->prepare($qr);
+    $preparedstmt->bind_param("is", $ccode1, $sname1);
+    $preparedstmt->execute();
+    $rs=$preparedstmt->bind_result($row1,$row2);
+    if(!empty($rs))
+    {
+      $preparedstmt->fetch();
+      if(addStudent($row1,$ename1,$year))
+      {
+        if(assignStudent($row1,$row2))
+        {
+          $flag++;
+        }
+      }
+      $preparedstmt->close();
+      $conn->close();
+    }
+  }
+  if(isset($_POST['chk2']))
+  {
+    $ename1=$_POST['ename2'];
+    $_SESSION['ename1']=$ename1;
+    $sname1=$_POST['sname2'];
+    $ccode1=$_POST['ccode2'];
+    $qr="SELECT studentccode,studentname FROM studentdata WHERE studentccode=? AND studentname=?";
+    $preparedstmt=$conn->prepare($qr);
+    $preparedstmt->bind_param("is", $ccode1, $sname1);
+    $preparedstmt->execute();
+    $rs=$preparedstmt->bind_result($row1,$row2);
+    if(!empty($rs))
+    {
+      $preparedstmt->fetch();
+      if(addStudent($row1,$ename1,$year))
+      {
+        if(assignStudent($row1,$row2))
+        {
+          $flag++;
+        }
+      }
+      $preparedstmt->close();
+      $conn->close();
+    }
+  }
+  if(isset($_POST['chk3']))
+  {
+    $ename1=$_POST['ename3'];
+    $_SESSION['ename1']=$ename1;
+    $sname1=$_POST['sname3'];
+    $ccode1=$_POST['ccode3'];
+    $qr="SELECT studentccode,studentname FROM studentdata WHERE studentccode=? AND studentname=?";
+    $preparedstmt=$conn->prepare($qr);
+    $preparedstmt->bind_param("is", $ccode1, $sname1);
+    $preparedstmt->execute();
+    $rs=$preparedstmt->bind_result($row1,$row2);
+    if(!empty($rs))
+    {
+      $preparedstmt->fetch();
+      if(addStudent($row1,$ename1,$year))
+      {
+        if(assignStudent($row1,$row2))
+        {
+          $flag++;
+        }
+      }
+      $preparedstmt->close();
+      $conn->close();
+    }
+  }
+  if(isset($_POST['chk4']))
+  {
+    $ename1=$_POST['ename4'];
+    $_SESSION['ename1']=$ename1;
+    $sname1=$_POST['sname4'];
+    $ccode1=$_POST['ccode4'];
+    $qr="SELECT studentccode,studentname FROM studentdata WHERE studentccode=? AND studentname=?";
+    $preparedstmt=$conn->prepare($qr);
+    $preparedstmt->bind_param("is", $ccode1, $sname1);
+    $preparedstmt->execute();
+    $rs=$preparedstmt->bind_result($row1,$row2);
+    if(!empty($rs))
+    {
+      $preparedstmt->fetch();
+      if(addStudent($row1,$ename1,$year))
+      {
+        if(assignStudent($row1,$row2))
+        {
+          $flag++;
+        }
+      }
+      $preparedstmt->close();
+      $conn->close();
+    }
+  }
+  if(isset($_POST['chk5']))
+  {
+    $ename1=$_POST['ename5'];
+    $_SESSION['ename1']=$ename1;
+    $sname1=$_POST['sname5'];
+    $ccode1=$_POST['ccode5'];
+    $qr="SELECT studentccode,studentname FROM studentdata WHERE studentccode=? AND studentname=?";
+    $preparedstmt=$conn->prepare($qr);
+    $preparedstmt->bind_param("is", $ccode1, $sname1);
+    $preparedstmt->execute();
+    $rs=$preparedstmt->bind_result($row1,$row2);
+    if(!empty($rs))
+    {
+      $preparedstmt->fetch();
+      if(addStudent($row1,$ename1,$year))
+      {
+        if(assignStudent($row1,$row2))
+        {
+          $flag++;
+        }
+      }
+      $preparedstmt->close();
+      $conn->close();
+    }
+  }
+  if($flag>0)
+  {
+    header("location:assignsc3.php");
+  }
+  else {
+    header("error_500fc.php");
+  }
+}
+?>
